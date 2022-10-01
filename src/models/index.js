@@ -6,15 +6,15 @@ const pizzaModel = require('./pizza/model');
 const Collection = require('./data-collection');
 require('dotenv').config();
 
-const DATABASE_URL = process.env.DATABASE_URL || 'sqlite:memory:';
+const DATABASE_URL = process.env.DATABASE_URL || 'sqlite:memory';
 let options = { logging: false };
-const sequelize = new Sequelize(DATABASE_URL);
+const sequelize = new Sequelize(DATABASE_URL, options);
 
-const user = userModel(sequelize, DataTypes);
+const users = userModel(sequelize, DataTypes);
 const pizza = pizzaModel(sequelize, DataTypes);
 
 module.exports = {
   database: sequelize,
   pizza: new Collection(pizza),
-  user,
+  users,
 };
