@@ -6,7 +6,7 @@ const morgan = require('morgan');
 
 const errorHandler = require('./error-handlers/500');
 const notFound = require('./error-handlers/404');
-const authRoutes = require('./auth/routes.js');
+// const authRoutes = require('./auth/routes.js');
 const logger = require('./middleware/logger');
 
 const v1Routes = require('./routes/v1');
@@ -25,7 +25,7 @@ app.use(logger);
 app.use('/api/v1', v1Routes);
 app.use('/api/v2', v2Routes);
 
-app.use(authRoutes);
+// app.use(authRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
