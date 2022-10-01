@@ -28,8 +28,6 @@ app.use('/api/v2', v2Routes);
 app.use(authRoutes);
 
 app.use(notFound);
-
-app.use(notFound);
 app.use(errorHandler);
 
 module.exports = {
