@@ -35,7 +35,7 @@ module.exports = {
   start: (port) => {
     if (!port) { throw new Error('Missing Port'); }
     app.listen(port, () => {
-      console.log('IT\'s ALIVE on ${port}');
+      console.log(`IT\'s ALIVE on ${port}`);
     });
   },
 };
