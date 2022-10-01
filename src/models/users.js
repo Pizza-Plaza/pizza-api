@@ -20,6 +20,7 @@ const userSchema = (sequelize, DataTypes) => {
         const acl = {
           customer: ['create', 'read', 'update', 'delete'],
           employee: ['read'],
+          admin: ['create', 'read', 'update', 'delete', 'read users'],
         };
         return acl[this.role];
       },
