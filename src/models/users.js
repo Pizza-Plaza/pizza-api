@@ -2,17 +2,26 @@
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-// const { Sequelize, DataTypes } = require('sequelize');
-
 
 const userSchema = (sequelize, DataTypes) => {
   const model = sequelize.define('User', {
     username: { type: DataTypes.STRING, allowNull: false, unique: true },
     password: { type: DataTypes.STRING, allowNull: false },
+    role: { type: DataTypes.ENUM('customer', 'employee', 'admin'), required: true, defaultValue: 'user' },
     token: {
       type: DataTypes.VIRTUAL,
       get() {
         return jwt.sign({ username: this.username });
+      },
+    },
+    capabilities: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        const acl = {
+          customer: ['create', 'read', 'update', 'delete'],
+          employee: ['read'],
+        };
+        return acl[this.role];
       },
     },
   });
