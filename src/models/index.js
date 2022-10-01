@@ -16,5 +16,5 @@ const pizza = pizzaModel(sequelize, DataTypes);
 module.exports = {
   database: sequelize,
   pizza: new Collection(pizza),
-//   user,
+  // user,
 };
