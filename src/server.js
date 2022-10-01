@@ -11,6 +11,7 @@ const logger = require('./middleware/logger');
 
 const v1Routes = require('./routes/v1');
 const v2Routes = require('./routes/v2');
+const authRouter = require('./auth/routes');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(logger);
 
 app.use('/api/v1', v1Routes);
 app.use('/api/v2', v2Routes);
+app.use(authRouter);
 
 // app.use(authRoutes);
 
@@ -35,7 +37,7 @@ module.exports = {
   start: (port) => {
     if (!port) { throw new Error('Missing Port'); }
     app.listen(port, () => {
-      console.log('IT\'s ALIVE on ${port}');
+      console.log(`IT's ALIVE on ${port}`);
     });
   },
 };
