@@ -4,6 +4,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const userModel = require('./users');
 const pizzaModel = require('./pizza/model');
 const Collection = require('./data-collection');
+require('dotenv').config();
 
 const DATABASE_URL = process.env.DATABASE_URL || 'sqlite:memory:';
 let options = { logging: false };

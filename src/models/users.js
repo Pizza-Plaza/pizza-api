@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const userSchema = (sequelize, DataTypes) => {
   const model = sequelize.define('User', {
     username: { type: DataTypes.STRING, allowNull: false, unique: true },
-    password: {type: DataTypes.STRING, allowNull: false },
+    password: { type: DataTypes.STRING, allowNull: false },
     token: {
       type: DataTypes.VIRTUAL,
       get() {
@@ -23,9 +23,9 @@ const userSchema = (sequelize, DataTypes) => {
 
   // Basic AUTH: Validating strings (username, password)
   model.authenticateBasic = async function (username, password) {
-    const user = await this.findOne({ where: { username }});
+    const user = await this.findOne({ where: { username } });
     const valid = await bcrypt.compare(password, user.password);
-    if(valid) { return user; }
+    if (valid) { return user; }
     throw new Error('Invalid User');
   };
 
