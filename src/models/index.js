@@ -7,7 +7,7 @@ const Collection = require('./data-collection');
 const sidesModel = require('./sides/model');
 require('dotenv').config();
 
-const DATABASE_URL = process.env.DATABASE_URL || 'sqlite:memory';
+const DATABASE_URL = process.env.DATABASE_URL || 'sqlite::memory';
 let options = { logging: false };
 const sequelize = new Sequelize(DATABASE_URL, options);
 
