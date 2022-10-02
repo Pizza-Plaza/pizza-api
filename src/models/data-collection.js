@@ -23,7 +23,7 @@ class DataCollection {
   }
 
   delete(id) {
-    return this.model.dextroy({ where: { id }});
+    return this.model.destroy({ where: { id }});
   }
 }
 
