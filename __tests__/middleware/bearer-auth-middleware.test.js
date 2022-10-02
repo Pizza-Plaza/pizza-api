@@ -32,6 +32,16 @@ describe('Auth Middleware', () => {
 
   describe('user authentication', () => {
 
+    it('fails a login for a user (admin) with no token', async () => {
+
+      req.headers = {};
+
+      await bearer(req, res, next);
+      expect(next).not.toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalledWith(403);
+
+    });
+
     it('fails a login for a user (admin) with an incorrect token', async () => {
 
       req.headers = {
