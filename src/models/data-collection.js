@@ -7,7 +7,7 @@ class DataCollection {
 
   get(id) {
     if (id) {
-      return this.model.findOne({ id });
+      return this.model.findOne({where: { id }});
     } else {
       return this.model.findAll({});
     }
@@ -23,7 +23,7 @@ class DataCollection {
   }
 
   delete(id) {
-    return this.model.dextroy({ where: { id }});
+    return this.model.destroy({ where: { id }});
   }
 }
 
